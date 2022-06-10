@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:getx_project/Auth/controller/auth_controller.dart';
 import 'package:getx_project/posts/controller/controller.dart';
-
 
 Widget custDrawer(BuildContext context) {
   Controller controller = Get.put(Controller());
@@ -21,12 +21,21 @@ Widget custDrawer(BuildContext context) {
           ),
         ),
         Card(
-          child: GetBuilder<Controller>(
-            builder: (context) =>  ListTile(
-              leading: const Icon(Icons.dark_mode),
-              title: const Text("Change Theme"),
+          child: ListTile(
+            leading: const Icon(Icons.dark_mode),
+            title: const Text("Change Theme"),
+            onTap: () {
+              controller.updateTheme();
+            },
+          ),
+        ),
+        Card(
+          child: GetBuilder<AuthController>(
+            builder: (authController) => ListTile(
+              leading: const Icon(Icons.exit_to_app_rounded),
+              title: const Text("Logout "),
               onTap: () {
-                controller.updateTheme();
+                authController.signOut();
               },
             ),
           ),
