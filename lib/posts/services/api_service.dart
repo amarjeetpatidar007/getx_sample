@@ -13,7 +13,7 @@ class NetworkService {
         onResponse: (response, handler) {
       // response data
       if (response.statusCode == 200) {
-        print(response.data);
+        // print(response.data);
         return handler.next(response);
       }
     }, onError: (DioError error, errorInterceptorHandler) async {
