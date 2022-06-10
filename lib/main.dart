@@ -30,6 +30,6 @@ class MyApp extends StatelessWidget {
         theme: Themes.lightTheme,
         darkTheme: Themes.darkTheme,
         getPages: Routes.routes,
-        home: const Page2());
+        home: const LoginPage());
   }
 }
