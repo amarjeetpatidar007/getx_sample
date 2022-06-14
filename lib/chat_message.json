@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "userName": "Raphaela",
+    "message": "potenti in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus",
+    "status": "joined",
+    "image": "https://robohash.org/dolordoloremquesunt.png?size=50x50&set=set1"
+  },
+  {
+    "id": 3,
+    "userName": "Archie",
+    "message": "eget nunc donec quis orci eget orci vehicula condimentum curabitur in libero",
+    "status": "messaged",
+    "image": "https://robohash.org/quoconsequunturexercitationem.png?size=50x50&set=set1"
+  },
+  {
+    "id": 4,
+    "userName": "Dar",
+    "message": "in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat",
+    "status": "joined",
+    "image": "https://robohash.org/estharumconsequatur.png?size=50x50&set=set1"
+  },
+  {
+    "id": 4,
+    "userName": "John",
+    "message": "in felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat",
+    "status": "joined",
+    "image": "https://robohash.org/estharumconsequatur.png?size=50x50&set=set1"
+  }
+]
