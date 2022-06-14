@@ -1,15 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:getx_project/Auth/controller/auth_controller.dart';
-import 'package:getx_project/Auth/view/register_page.dart';
+import 'package:getx_project/chat/view/chat_view.dart';
 import 'package:getx_project/languages.dart';
-import 'package:getx_project/posts/views/page2.dart';
 import 'package:getx_project/routes.dart';
 import 'package:getx_project/theme.dart';
 
-import 'Auth/view/login_page.dart';
+import 'chat/bindings.dart';
+import 'chat/view/landscape_chat_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,14 +20,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(AuthController());
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.landscapeLeft,
+    //   DeviceOrientation.landscapeRight,
+    // ]);
+
+    // Get.put(AuthController(),permanent: true);
+    // Get.put(ChatController());
     return GetMaterialApp(
         translations: Languages(),
         locale: Get.deviceLocale,
+        initialBinding: AppBinding(),
         title: "Sample Getx",
         theme: Themes.lightTheme,
         darkTheme: Themes.darkTheme,
         getPages: Routes.routes,
-        home: const LoginPage());
+        home: OrientationBuilder(builder: (context, orientation) {
+          if (orientation == Orientation.portrait) {
+            return const ChatScreen();
+          } else {
+            return const ChatViewLandscapeOrientation();
+          }
+        }));
   }
 }
