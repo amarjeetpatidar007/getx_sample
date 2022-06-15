@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_project/chat/view/chat_view.dart';
 import 'package:getx_project/languages.dart';
 import 'package:getx_project/routes.dart';
+import 'package:getx_project/session/session.dart';
 import 'package:getx_project/theme.dart';
 
 import 'chat/bindings.dart';
@@ -35,9 +35,12 @@ class MyApp extends StatelessWidget {
         theme: Themes.lightTheme,
         darkTheme: Themes.darkTheme,
         getPages: Routes.routes,
+
+        // home: SocketTestView(),
+
         home: OrientationBuilder(builder: (context, orientation) {
           if (orientation == Orientation.portrait) {
-            return const ChatScreen();
+            return const SessionPage();
           } else {
             return const ChatViewLandscapeOrientation();
           }

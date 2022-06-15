@@ -10,8 +10,10 @@ class ChatController extends GetxController {
 
   // ScrollController scrollController = ScrollController();
 
-  void init() {
+  @override
+  void onInit() async {
     readJsonData();
+    super.onInit();
   }
 
   readJsonData() async {
