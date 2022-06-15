@@ -63,7 +63,7 @@ class ChatViewLandscapeOrientation extends GetView<ChatController> {
                             children: [
                               Container(
                                 height: 40,
-                                width: 164,
+                                width: 150,
                                 child: TextFormField(
                                     controller: textEditingController,
                                     minLines: 1,

@@ -35,6 +35,9 @@ class MyApp extends StatelessWidget {
         theme: Themes.lightTheme,
         darkTheme: Themes.darkTheme,
         getPages: Routes.routes,
+
+        // home: SocketTestView(),
+
         home: OrientationBuilder(builder: (context, orientation) {
           if (orientation == Orientation.portrait) {
             return const ChatScreen();
