@@ -43,9 +43,7 @@ Widget emojiButton({required String emoji, required Function() onPressed}) {
 
 Widget userMessage({required String userName, required String message}) {
   return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-      ),
+      padding: const EdgeInsets.only(left: 12, right: 20),
       child: RichText(
         text: TextSpan(children: [
           TextSpan(

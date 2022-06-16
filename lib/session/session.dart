@@ -25,7 +25,7 @@ class SessionPage extends GetView<SessionController> {
                       ? ElevatedButton(
                           onPressed: () {}, child: const Text('Join Live Chat'))
                       : const Text('Chat is Not Live'),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
