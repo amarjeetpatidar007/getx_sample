@@ -54,12 +54,11 @@ class ChatViewLandscapeOrientation extends GetView<ChatController> {
                       ),
                     ),
                     Column(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.only(
+                              right: 8.0, left: 10.0, bottom: 12.0),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Container(
                                 height: 40,
@@ -79,8 +78,11 @@ class ChatViewLandscapeOrientation extends GetView<ChatController> {
                                         // enabledBorder: ,
                                         )),
                               ),
+                              const SizedBox(
+                                width: 6.0,
+                              ),
                               Container(
-                                width: 40,
+                                width: 35,
                                 height: 40,
                                 child: ElevatedButton(
                                   onPressed: () {
@@ -89,8 +91,8 @@ class ChatViewLandscapeOrientation extends GetView<ChatController> {
                                   },
                                   child: SvgPicture.asset(
                                     "assets/send.svg",
-                                    height: 40,
-                                    width: 40,
+                                    // height: 40,
+                                    // width: 40,
                                   ),
                                 ),
                               ),

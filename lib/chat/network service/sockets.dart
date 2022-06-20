@@ -1,5 +1,4 @@
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import 'package:socket_io_client/socket_io_client.dart';
 
 class SocketService {
   // late IO.Socket socket;
@@ -11,9 +10,11 @@ class SocketService {
   static void connectToServer() {
     try {
       // Configure socket transports must be sepecified
-      IO.Socket socket = IO.io(liveClassEndPoint, <String, dynamic>{
-        'transports': ['websocket'],
-      });
+      IO.Socket socket = IO.io(
+          liveClassEndPoint,
+          IO.OptionBuilder()
+              .setTransports(['websocket']) // for Flutter or Dart VM
+              .build());
 
       // Connect to websocket
       print("Socket : ${socket.connected}");

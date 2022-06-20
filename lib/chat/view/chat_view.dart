@@ -5,10 +5,13 @@ import 'package:getx_project/chat/controller/chat_controller.dart';
 import 'package:getx_project/chat/model/chat_model.dart';
 import 'package:getx_project/chat/utils/common_widgets.dart';
 
+import '../network service/sockets.dart';
+
 class ChatScreen extends GetView<ChatController> {
   const ChatScreen({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
+    SocketService.connectToServer();
     TextEditingController textEditingController = TextEditingController();
     ScrollController scrollController = ScrollController();
     Get.put(ChatController());
@@ -32,8 +35,8 @@ class ChatScreen extends GetView<ChatController> {
                 return messageModel.status == 'joined'
                     ? joinedChatChip(userName: messageModel.userName)
                     : userMessage(
-                        userName: messageModel.userName,
-                        message: messageModel.message);
+                    userName: messageModel.userName,
+                    message: messageModel.message);
               },
             );
           },
@@ -45,42 +48,46 @@ class ChatScreen extends GetView<ChatController> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      // height: 40,
-                      width: 300,
-                      child: TextFormField(
-                          controller: textEditingController,
-                          minLines: 1,
-                          maxLines: 4,
-                          decoration: const InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              hintText: "Message",
-                              focusedBorder: InputBorder.none,
-                              border: InputBorder.none
-                              // enabledBorder: ,
-                              )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(left: 20, right: 12),
+                    width: 300,
+                    child: TextFormField(
+                        controller: textEditingController,
+                        minLines: 1,
+                        maxLines: 4,
+                        decoration: const InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "Message",
+                            focusedBorder: InputBorder.none,
+                            border: InputBorder.none
+                            // enabledBorder: ,
+                            )),
+                  ),
+                  Container(
+                    height: 50,
+                    padding: const EdgeInsets.only(
+                      left: 8.0,
+                      right: 10,
                     ),
-                    Container(
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          controller.addMessage(textEditingController.text);
-                        },
-                        child: SvgPicture.asset(
-                          "assets/send.svg",
-                          height: 25,
-                          width: 25,
-                        ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.addMessage(textEditingController.text);
+                      },
+                      child: SvgPicture.asset(
+                        "assets/send.svg",
+                        height: 25,
+                        width: 25,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 12.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
