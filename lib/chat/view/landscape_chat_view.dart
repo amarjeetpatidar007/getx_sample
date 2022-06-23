@@ -67,7 +67,7 @@ class ChatViewLandscapeOrientation extends GetView<ChatController> {
                                     controller: textEditingController,
                                     minLines: 1,
                                     maxLines: 4,
-                                    style: TextStyle(fontSize: 10),
+                                    style: const TextStyle(fontSize: 10),
                                     decoration: const InputDecoration(
                                         contentPadding: EdgeInsets.zero,
                                         fillColor: Colors.white,

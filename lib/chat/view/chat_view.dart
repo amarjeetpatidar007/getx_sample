@@ -5,13 +5,11 @@ import 'package:getx_project/chat/controller/chat_controller.dart';
 import 'package:getx_project/chat/model/chat_model.dart';
 import 'package:getx_project/chat/utils/common_widgets.dart';
 
-import '../network service/sockets.dart';
 
 class ChatScreen extends GetView<ChatController> {
   const ChatScreen({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
-    SocketService.connectToServer();
     TextEditingController textEditingController = TextEditingController();
     ScrollController scrollController = ScrollController();
     Get.put(ChatController());
@@ -74,8 +72,13 @@ class ChatScreen extends GetView<ChatController> {
                       right: 10,
                     ),
                     child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(127, 86, 217, 1))
+                    ),
                       onPressed: () {
                         controller.addMessage(textEditingController.text);
+                        // controller
+                        //     .addMessageToSocket("--------test Message-----");
                       },
                       child: SvgPicture.asset(
                         "assets/send.svg",
