@@ -5,14 +5,16 @@ import 'package:get/get.dart';
 import 'package:getx_project/chat/model/chat_model.dart';
 import 'package:getx_project/chat/utils/common_widgets.dart';
 
+import '../network service/socketService.dart';
+
 class ChatController extends GetxController {
   List<ChatMessageModel> messageList = [];
 
   // ScrollController scrollController = ScrollController();
-
   @override
   void onInit() async {
     readJsonData();
+    // SocketService.connectToServer();
     super.onInit();
   }
 
@@ -25,6 +27,11 @@ class ChatController extends GetxController {
     //map json and initialize
     // List<ChatMessageModel> msgList = list.map((e) => ChatMessageModel.fromJSON(e)).toList();
     messageList.addAll(list.map((e) => ChatMessageModel.fromJSON(e)).toList());
+  }
+
+  addMessageToSocket(String msg) {
+    return SocketService.sendMessage(msg);
+    // update();
   }
 
   addMessage(String message) {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_project/chat/view/chat_View_Socket_test.dart';
 import 'package:getx_project/session/controller.dart';
 
-import '../chat/network service/sockets.dart';
+import '../chat/network service/socketService.dart';
 
 class SessionPage extends GetView<SessionController> {
   const SessionPage({Key? key}) : super(key: key);
@@ -23,7 +24,11 @@ class SessionPage extends GetView<SessionController> {
                 children: [
                   controller.isLive
                       ? ElevatedButton(
-                          onPressed: () {}, child: const Text('Join Live Chat'))
+                          onPressed: () {
+                            controller.joinLiveClassChat();
+                            Get.to(const ChatViewTestScreen());
+                          },
+                          child: const Text('Join Live Chat'))
                       : const Text('Chat is Not Live'),
                   const SizedBox(
                     height: 20,
@@ -31,8 +36,8 @@ class SessionPage extends GetView<SessionController> {
                   ElevatedButton(
                       onPressed: () async {
                         SocketService.connectToServer();
-                        // controller.getLiveSession();
-                        // print(controller.isLive);
+                        controller.getLiveSession();
+                        print(controller.isLive);
                       },
                       child: const Text('Get Live Session Data'))
                 ],
